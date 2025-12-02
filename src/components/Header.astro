@@ -1,0 +1,267 @@
+---
+/**
+ * Header Component
+ * Main navigation with logo, nav links, language switcher, and theme toggle
+ */
+import ThemeToggle from './ThemeToggle.astro';
+import LanguageSwitcher from './LanguageSwitcher.astro';
+import { getLangFromUrl, useTranslations, getTranslatedPath, type Lang } from '../i18n';
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+
+// Navigation items
+const navItems = [
+  { href: '', label: t.nav.home },
+  { href: 'blog', label: t.nav.blog },
+  { href: 'projects', label: t.nav.projects },
+  { href: 'about', label: t.nav.about },
+];
+
+// Get current path for active state
+const currentPath = Astro.url.pathname;
+---
+
+<header class="header">
+  <div class="container header-container">
+    <!-- Logo -->
+    <a href={getTranslatedPath('/', lang)} class="logo">
+      <span class="logo-text">&lt;AC /&gt;</span>
+    </a>
+
+    <!-- Mobile menu button -->
+    <button
+      type="button"
+      class="mobile-menu-btn no-print"
+      aria-label="Toggle menu"
+      aria-expanded="false"
+    >
+      <svg
+        class="menu-icon"
+        xmlns="http://www.w3.org/2000/svg"
+        width="24"
+        height="24"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+      >
+        <line x1="3" y1="12" x2="21" y2="12"></line>
+        <line x1="3" y1="6" x2="21" y2="6"></line>
+        <line x1="3" y1="18" x2="21" y2="18"></line>
+      </svg>
+      <svg
+        class="close-icon"
+        xmlns="http://www.w3.org/2000/svg"
+        width="24"
+        height="24"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+      >
+        <line x1="18" y1="6" x2="6" y2="18"></line>
+        <line x1="6" y1="6" x2="18" y2="18"></line>
+      </svg>
+    </button>
+
+    <!-- Navigation -->
+    <nav class="nav no-print">
+      <ul class="nav-list">
+        {navItems.map((item) => {
+          const href = getTranslatedPath(item.href, lang);
+          const isActive = currentPath === href || 
+            (item.href !== '' && currentPath.startsWith(href));
+          return (
+            <li>
+              <a
+                href={href}
+                class:list={['nav-link', { active: isActive }]}
+                aria-current={isActive ? 'page' : undefined}
+              >
+                {item.label}
+              </a>
+            </li>
+          );
+        })}
+      </ul>
+    </nav>
+
+    <!-- Actions -->
+    <div class="header-actions no-print">
+      <LanguageSwitcher />
+      <ThemeToggle />
+    </div>
+  </div>
+</header>
+
+<style>
+  .header {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background-color: var(--color-bg);
+    border-bottom: 1px solid var(--color-border);
+    backdrop-filter: blur(8px);
+  }
+
+  .header-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 4rem;
+    gap: 2rem;
+  }
+
+  .logo {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: var(--color-text);
+    text-decoration: none;
+  }
+
+  .logo-text {
+    background: linear-gradient(135deg, var(--color-accent), var(--color-primary-400));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .nav {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+  }
+
+  .nav-list {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  .nav-link {
+    padding: 0.5rem 1rem;
+    border-radius: 0.5rem;
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: var(--color-text-secondary);
+    text-decoration: none;
+    transition: all 0.2s ease;
+  }
+
+  .nav-link:hover {
+    background-color: var(--color-bg-secondary);
+    color: var(--color-text);
+  }
+
+  .nav-link.active {
+    background-color: var(--color-bg-tertiary);
+    color: var(--color-accent);
+  }
+
+  .header-actions {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+  }
+
+  .mobile-menu-btn {
+    display: none;
+    align-items: center;
+    justify-content: center;
+    width: 2.5rem;
+    height: 2.5rem;
+    padding: 0;
+    background: transparent;
+    border: none;
+    color: var(--color-text);
+    cursor: pointer;
+  }
+
+  .close-icon {
+    display: none;
+  }
+
+  /* Mobile styles */
+  @media (max-width: 768px) {
+    .mobile-menu-btn {
+      display: flex;
+    }
+
+    .nav {
+      position: fixed;
+      top: 4rem;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-color: var(--color-bg);
+      padding: 1.5rem;
+      opacity: 0;
+      visibility: hidden;
+      transform: translateY(-1rem);
+      transition: all 0.3s ease;
+    }
+
+    .header.menu-open .nav {
+      opacity: 1;
+      visibility: visible;
+      transform: translateY(0);
+    }
+
+    .header.menu-open .menu-icon {
+      display: none;
+    }
+
+    .header.menu-open .close-icon {
+      display: block;
+    }
+
+    .nav-list {
+      flex-direction: column;
+      align-items: stretch;
+      gap: 0.5rem;
+    }
+
+    .nav-link {
+      display: block;
+      padding: 1rem;
+      font-size: 1rem;
+    }
+
+    .header-actions {
+      gap: 0.5rem;
+    }
+  }
+</style>
+
+<script>
+  function initHeader() {
+    const header = document.querySelector('.header');
+    const menuBtn = header?.querySelector('.mobile-menu-btn');
+
+    menuBtn?.addEventListener('click', () => {
+      header?.classList.toggle('menu-open');
+      const isOpen = header?.classList.contains('menu-open');
+      menuBtn.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+    });
+
+    // Close menu when clicking a nav link
+    const navLinks = header?.querySelectorAll('.nav-link');
+    navLinks?.forEach((link) => {
+      link.addEventListener('click', () => {
+        header?.classList.remove('menu-open');
+        menuBtn?.setAttribute('aria-expanded', 'false');
+      });
+    });
+  }
+
+  initHeader();
+  document.addEventListener('astro:after-swap', initHeader);
+</script>

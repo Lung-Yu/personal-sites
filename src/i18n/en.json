@@ -1,0 +1,75 @@
+{
+  "site": {
+    "title": "Security Researcher & Developer",
+    "description": "Personal website of a security researcher and developer. Sharing knowledge about cybersecurity, software development, and technical insights."
+  },
+  "nav": {
+    "home": "Home",
+    "blog": "Blog",
+    "projects": "Projects",
+    "about": "About"
+  },
+  "home": {
+    "greeting": "Hi, I'm",
+    "name": "Alex Chen",
+    "role": "Security Researcher & Developer",
+    "intro": "Passionate about cybersecurity, building secure applications, and sharing knowledge with the community.",
+    "cta": {
+      "projects": "View Projects",
+      "contact": "Get in Touch"
+    }
+  },
+  "blog": {
+    "title": "Blog",
+    "description": "Technical articles about cybersecurity, penetration testing, secure coding, and software development.",
+    "readMore": "Read more",
+    "publishedOn": "Published on",
+    "minRead": "min read",
+    "allPosts": "All Posts",
+    "tags": "Tags"
+  },
+  "projects": {
+    "title": "Projects",
+    "description": "A collection of security tools, open-source contributions, and personal projects.",
+    "viewProject": "View Project",
+    "sourceCode": "Source Code",
+    "liveDemo": "Live Demo",
+    "technologies": "Technologies"
+  },
+  "about": {
+    "title": "About Me",
+    "description": "Learn more about my background, skills, and experience.",
+    "sections": {
+      "bio": "Biography",
+      "experience": "Work Experience",
+      "certifications": "Certifications",
+      "speaking": "Speaking & Presentations",
+      "skills": "Skills",
+      "education": "Education",
+      "social": "Connect With Me"
+    },
+    "present": "Present",
+    "downloadResume": "Download Resume (PDF)",
+    "printResume": "Print Resume"
+  },
+  "footer": {
+    "copyright": "All rights reserved.",
+    "builtWith": "Built with"
+  },
+  "theme": {
+    "light": "Light",
+    "dark": "Dark",
+    "toggle": "Toggle theme"
+  },
+  "language": {
+    "select": "Select language",
+    "en": "English",
+    "zh-tw": "繁體中文"
+  },
+  "common": {
+    "loading": "Loading...",
+    "error": "An error occurred",
+    "notFound": "Page not found",
+    "backHome": "Back to Home"
+  }
+}

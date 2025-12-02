@@ -1,0 +1,14 @@
+services:
+  dev:
+    build: .
+    ports:
+      - "4321:4321"
+    volumes:
+      # Mount source for hot-reload
+      - .:/app
+      # Preserve container's node_modules
+      - /app/node_modules
+    environment:
+      - HOST=0.0.0.0
+      - PORT=4321
+    command: npm run dev

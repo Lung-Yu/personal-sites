@@ -1,0 +1,408 @@
+---
+/**
+ * Home Page (English - Default)
+ */
+import Layout from '../layouts/Layout.astro';
+import { profile } from '../data/profile';
+import { useTranslations, getTranslatedPath } from '../i18n';
+
+const lang = 'en';
+const t = useTranslations(lang);
+---
+
+<Layout>
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="container hero-content">
+      <div class="hero-text">
+        <p class="greeting">{t.home.greeting}</p>
+        <h1 class="name">{profile.name}</h1>
+        <p class="role">{profile.title[lang]}</p>
+        <p class="intro">{profile.bio[lang]}</p>
+        <div class="cta-buttons">
+          <a href={getTranslatedPath('projects', lang)} class="btn btn-primary">
+            {t.home.cta.projects}
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <line x1="5" y1="12" x2="19" y2="12"></line>
+              <polyline points="12 5 19 12 12 19"></polyline>
+            </svg>
+          </a>
+          <a href={getTranslatedPath('about', lang)} class="btn btn-outline">
+            {t.home.cta.contact}
+          </a>
+        </div>
+      </div>
+      <div class="hero-visual">
+        <div class="code-window">
+          <div class="window-header">
+            <span class="dot red"></span>
+            <span class="dot yellow"></span>
+            <span class="dot green"></span>
+          </div>
+          <pre class="code-content"><code><span class="keyword">const</span> <span class="variable">security</span> = {`{`}
+  <span class="key">passion</span>: <span class="string">'finding vulnerabilities'</span>,
+  <span class="key">mission</span>: <span class="string">'building secure systems'</span>,
+  <span class="key">motto</span>: <span class="string">'hack to protect'</span>
+{`}`};
+
+<span class="keyword">async function</span> <span class="function">protect</span>() {`{`}
+  <span class="keyword">await</span> <span class="function">analyze</span>(threats);
+  <span class="keyword">await</span> <span class="function">secure</span>(systems);
+  <span class="keyword">return</span> peace_of_mind;
+{`}`}</code></pre>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Skills Preview -->
+  <section class="section skills-preview">
+    <div class="container">
+      <h2 class="section-title">What I Do</h2>
+      <div class="skills-grid">
+        <div class="skill-card">
+          <div class="skill-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+            </svg>
+          </div>
+          <h3>Security Research</h3>
+          <p>Penetration testing, vulnerability assessment, and security auditing for web applications and infrastructure.</p>
+        </div>
+        <div class="skill-card">
+          <div class="skill-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="16 18 22 12 16 6"></polyline>
+              <polyline points="8 6 2 12 8 18"></polyline>
+            </svg>
+          </div>
+          <h3>Secure Development</h3>
+          <p>Building robust applications with security-first mindset using modern frameworks and best practices.</p>
+        </div>
+        <div class="skill-card">
+          <div class="skill-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="12" r="3"></circle>
+              <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path>
+            </svg>
+          </div>
+          <h3>DevSecOps</h3>
+          <p>Integrating security into CI/CD pipelines, infrastructure as code, and cloud security architecture.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Recent Posts Preview -->
+  <section class="section recent-posts">
+    <div class="container">
+      <div class="section-header">
+        <h2 class="section-title">Recent Articles</h2>
+        <a href={getTranslatedPath('blog', lang)} class="view-all">
+          View All
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="5" y1="12" x2="19" y2="12"></line>
+            <polyline points="12 5 19 12 12 19"></polyline>
+          </svg>
+        </a>
+      </div>
+      <div class="posts-grid">
+        <article class="post-card">
+          <div class="post-meta">
+            <time datetime="2024-01-15">Jan 15, 2024</time>
+            <span class="tag tag-primary">Security</span>
+          </div>
+          <h3><a href="#">SQL Injection Deep Dive: From Detection to Prevention</a></h3>
+          <p>A comprehensive guide to understanding, identifying, and preventing SQL injection vulnerabilities in modern web applications.</p>
+        </article>
+        <article class="post-card">
+          <div class="post-meta">
+            <time datetime="2024-01-08">Jan 8, 2024</time>
+            <span class="tag tag-primary">DevSecOps</span>
+          </div>
+          <h3><a href="#">Building a Secure CI/CD Pipeline with GitHub Actions</a></h3>
+          <p>Step-by-step guide to implementing security scanning, secret management, and compliance checks in your deployment pipeline.</p>
+        </article>
+        <article class="post-card">
+          <div class="post-meta">
+            <time datetime="2024-01-01">Jan 1, 2024</time>
+            <span class="tag tag-primary">Cloud</span>
+          </div>
+          <h3><a href="#">AWS Security Best Practices for Startups</a></h3>
+          <p>Essential security configurations and practices for startups building on AWS, from IAM to network security.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+</Layout>
+
+<style>
+  /* Hero Section */
+  .hero {
+    padding: 4rem 0 6rem;
+    background: linear-gradient(135deg, var(--color-bg) 0%, var(--color-bg-secondary) 100%);
+  }
+
+  .hero-content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: center;
+  }
+
+  .greeting {
+    font-size: 1.125rem;
+    color: var(--color-accent);
+    margin-bottom: 0.5rem;
+  }
+
+  .name {
+    font-size: 3.5rem;
+    font-weight: 700;
+    line-height: 1.1;
+    margin-bottom: 1rem;
+    background: linear-gradient(135deg, var(--color-text) 0%, var(--color-accent) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .role {
+    font-size: 1.25rem;
+    color: var(--color-text-secondary);
+    margin-bottom: 1.5rem;
+  }
+
+  .intro {
+    font-size: 1rem;
+    color: var(--color-text-secondary);
+    line-height: 1.8;
+    margin-bottom: 2rem;
+  }
+
+  .cta-buttons {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+
+  /* Code Window */
+  .hero-visual {
+    display: flex;
+    justify-content: center;
+  }
+
+  .code-window {
+    background-color: var(--color-bg-secondary);
+    border: 1px solid var(--color-border);
+    border-radius: 0.75rem;
+    overflow: hidden;
+    box-shadow: 0 20px 25px -5px var(--color-card-shadow);
+    max-width: 100%;
+  }
+
+  .window-header {
+    display: flex;
+    gap: 0.5rem;
+    padding: 0.75rem 1rem;
+    background-color: var(--color-bg-tertiary);
+    border-bottom: 1px solid var(--color-border);
+  }
+
+  .dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+  }
+
+  .dot.red { background-color: #ff5f56; }
+  .dot.yellow { background-color: #ffbd2e; }
+  .dot.green { background-color: #27c93f; }
+
+  .code-content {
+    padding: 1.5rem;
+    margin: 0;
+    font-size: 0.875rem;
+    line-height: 1.6;
+    overflow-x: auto;
+  }
+
+  .code-content code {
+    background: none;
+    padding: 0;
+  }
+
+  .keyword { color: #c678dd; }
+  .variable { color: #e06c75; }
+  .key { color: #e06c75; }
+  .string { color: #98c379; }
+  .function { color: #61afef; }
+
+  [data-theme="dark"] .keyword { color: #c678dd; }
+  [data-theme="dark"] .variable { color: #e5c07b; }
+  [data-theme="dark"] .string { color: #98c379; }
+  [data-theme="dark"] .function { color: #61afef; }
+
+  /* Skills Preview */
+  .section-title {
+    font-size: 2rem;
+    margin-bottom: 2rem;
+    text-align: center;
+  }
+
+  .skills-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+  }
+
+  .skill-card {
+    padding: 2rem;
+    background-color: var(--color-card-bg);
+    border: 1px solid var(--color-border);
+    border-radius: 0.75rem;
+    text-align: center;
+    transition: all 0.3s ease;
+  }
+
+  .skill-card:hover {
+    transform: translateY(-4px);
+    border-color: var(--color-accent);
+    box-shadow: 0 10px 30px -10px var(--color-card-shadow);
+  }
+
+  .skill-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 4rem;
+    height: 4rem;
+    margin-bottom: 1rem;
+    background: linear-gradient(135deg, var(--color-primary-100) 0%, var(--color-primary-200) 100%);
+    border-radius: 1rem;
+    color: var(--color-accent);
+  }
+
+  [data-theme="dark"] .skill-icon {
+    background: linear-gradient(135deg, var(--color-primary-900) 0%, var(--color-primary-800) 100%);
+  }
+
+  .skill-card h3 {
+    font-size: 1.25rem;
+    margin-bottom: 0.75rem;
+  }
+
+  .skill-card p {
+    color: var(--color-text-secondary);
+    font-size: 0.875rem;
+    line-height: 1.6;
+  }
+
+  /* Recent Posts */
+  .section-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2rem;
+  }
+
+  .section-header .section-title {
+    margin-bottom: 0;
+    text-align: left;
+  }
+
+  .view-all {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.875rem;
+    font-weight: 500;
+  }
+
+  .posts-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+  }
+
+  .post-card {
+    padding: 1.5rem;
+    background-color: var(--color-card-bg);
+    border: 1px solid var(--color-border);
+    border-radius: 0.75rem;
+    transition: all 0.2s ease;
+  }
+
+  .post-card:hover {
+    border-color: var(--color-border-hover);
+  }
+
+  .post-meta {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin-bottom: 0.75rem;
+    font-size: 0.75rem;
+  }
+
+  .post-meta time {
+    color: var(--color-text-tertiary);
+  }
+
+  .post-card h3 {
+    font-size: 1.125rem;
+    margin-bottom: 0.5rem;
+    line-height: 1.4;
+  }
+
+  .post-card h3 a {
+    color: var(--color-text);
+  }
+
+  .post-card h3 a:hover {
+    color: var(--color-accent);
+  }
+
+  .post-card p {
+    color: var(--color-text-secondary);
+    font-size: 0.875rem;
+    line-height: 1.6;
+  }
+
+  /* Responsive */
+  @media (max-width: 1024px) {
+    .hero-content {
+      grid-template-columns: 1fr;
+      text-align: center;
+    }
+
+    .cta-buttons {
+      justify-content: center;
+    }
+
+    .hero-visual {
+      order: -1;
+    }
+
+    .skills-grid,
+    .posts-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @media (max-width: 640px) {
+    .name {
+      font-size: 2.5rem;
+    }
+
+    .skills-grid,
+    .posts-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .section-header {
+      flex-direction: column;
+      gap: 1rem;
+    }
+  }
+</style>

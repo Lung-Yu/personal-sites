@@ -1,0 +1,75 @@
+{
+  "site": {
+    "title": "資安研究員 & 開發者",
+    "description": "資安研究員與開發者的個人網站。分享網路安全、軟體開發與技術洞見相關知識。"
+  },
+  "nav": {
+    "home": "首頁",
+    "blog": "文章",
+    "projects": "作品",
+    "about": "關於我"
+  },
+  "home": {
+    "greeting": "嗨，我是",
+    "name": "Alex Chen",
+    "role": "資安研究員 & 開發者",
+    "intro": "熱衷於網路安全、建構安全的應用程式，並與社群分享知識。",
+    "cta": {
+      "projects": "查看作品",
+      "contact": "聯絡我"
+    }
+  },
+  "blog": {
+    "title": "技術文章",
+    "description": "關於網路安全、滲透測試、安全程式設計與軟體開發的技術文章。",
+    "readMore": "閱讀更多",
+    "publishedOn": "發布於",
+    "minRead": "分鐘閱讀",
+    "allPosts": "所有文章",
+    "tags": "標籤"
+  },
+  "projects": {
+    "title": "作品集",
+    "description": "資安工具、開源貢獻與個人專案的集合。",
+    "viewProject": "查看專案",
+    "sourceCode": "原始碼",
+    "liveDemo": "線上展示",
+    "technologies": "使用技術"
+  },
+  "about": {
+    "title": "關於我",
+    "description": "了解更多關於我的背景、技能與經歷。",
+    "sections": {
+      "bio": "個人簡介",
+      "experience": "工作經歷",
+      "certifications": "專業證照",
+      "speaking": "演講與簡報",
+      "skills": "技能專長",
+      "education": "學歷背景",
+      "social": "社群連結"
+    },
+    "present": "至今",
+    "downloadResume": "下載履歷 (PDF)",
+    "printResume": "列印履歷"
+  },
+  "footer": {
+    "copyright": "版權所有。",
+    "builtWith": "使用"
+  },
+  "theme": {
+    "light": "淺色",
+    "dark": "深色",
+    "toggle": "切換主題"
+  },
+  "language": {
+    "select": "選擇語言",
+    "en": "English",
+    "zh-tw": "繁體中文"
+  },
+  "common": {
+    "loading": "載入中...",
+    "error": "發生錯誤",
+    "notFound": "找不到頁面",
+    "backHome": "返回首頁"
+  }
+}

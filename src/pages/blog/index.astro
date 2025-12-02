@@ -1,0 +1,283 @@
+---
+/**
+ * Blog Page (English)
+ */
+import Layout from '../../layouts/Layout.astro';
+import { useTranslations } from '../../i18n';
+
+const lang = 'en';
+const t = useTranslations(lang);
+
+// Mock blog posts data
+const posts = [
+  {
+    slug: 'sql-injection-deep-dive',
+    title: 'SQL Injection Deep Dive: From Detection to Prevention',
+    excerpt: 'A comprehensive guide to understanding, identifying, and preventing SQL injection vulnerabilities in modern web applications.',
+    date: '2024-01-15',
+    readTime: 12,
+    tags: ['Security', 'Web', 'Database'],
+  },
+  {
+    slug: 'secure-cicd-github-actions',
+    title: 'Building a Secure CI/CD Pipeline with GitHub Actions',
+    excerpt: 'Step-by-step guide to implementing security scanning, secret management, and compliance checks in your deployment pipeline.',
+    date: '2024-01-08',
+    readTime: 15,
+    tags: ['DevSecOps', 'GitHub', 'Automation'],
+  },
+  {
+    slug: 'aws-security-startups',
+    title: 'AWS Security Best Practices for Startups',
+    excerpt: 'Essential security configurations and practices for startups building on AWS, from IAM to network security.',
+    date: '2024-01-01',
+    readTime: 10,
+    tags: ['Cloud', 'AWS', 'Security'],
+  },
+  {
+    slug: 'xss-prevention-guide',
+    title: 'XSS Prevention: A Developer\'s Complete Guide',
+    excerpt: 'Understanding Cross-Site Scripting attacks and implementing effective prevention strategies in your applications.',
+    date: '2023-12-20',
+    readTime: 14,
+    tags: ['Security', 'Web', 'JavaScript'],
+  },
+  {
+    slug: 'kubernetes-security-hardening',
+    title: 'Kubernetes Security Hardening Checklist',
+    excerpt: 'Essential security configurations and best practices for production Kubernetes clusters.',
+    date: '2023-12-10',
+    readTime: 18,
+    tags: ['Kubernetes', 'DevOps', 'Security'],
+  },
+];
+
+// Get unique tags
+const allTags = [...new Set(posts.flatMap(post => post.tags))];
+---
+
+<Layout title={`${t.blog.title} | ${t.site.title}`} description={t.blog.description}>
+  <section class="section">
+    <div class="container">
+      <!-- Page Header -->
+      <div class="page-header">
+        <h1>{t.blog.title}</h1>
+        <p>{t.blog.description}</p>
+      </div>
+
+      <!-- Tags Filter -->
+      <div class="tags-filter">
+        <span class="filter-label">{t.blog.tags}:</span>
+        <div class="tags-list">
+          <button class="tag active" data-tag="all">{t.blog.allPosts}</button>
+          {allTags.map(tag => (
+            <button class="tag" data-tag={tag}>{tag}</button>
+          ))}
+        </div>
+      </div>
+
+      <!-- Blog Posts Grid -->
+      <div class="posts-grid">
+        {posts.map(post => (
+          <article class="post-card" data-tags={post.tags.join(',')}>
+            <div class="post-meta">
+              <time datetime={post.date}>
+                {new Date(post.date).toLocaleDateString('en-US', { 
+                  year: 'numeric', 
+                  month: 'short', 
+                  day: 'numeric' 
+                })}
+              </time>
+              <span class="read-time">{post.readTime} {t.blog.minRead}</span>
+            </div>
+            <h2><a href={`/blog/${post.slug}`}>{post.title}</a></h2>
+            <p>{post.excerpt}</p>
+            <div class="post-tags">
+              {post.tags.map(tag => (
+                <span class="tag tag-primary">{tag}</span>
+              ))}
+            </div>
+            <a href={`/blog/${post.slug}`} class="read-more">
+              {t.blog.readMore}
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="5" y1="12" x2="19" y2="12"></line>
+                <polyline points="12 5 19 12 12 19"></polyline>
+              </svg>
+            </a>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+</Layout>
+
+<style>
+  .page-header {
+    text-align: center;
+    margin-bottom: 3rem;
+  }
+
+  .page-header h1 {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+  }
+
+  .page-header p {
+    color: var(--color-text-secondary);
+    max-width: 600px;
+    margin: 0 auto;
+  }
+
+  /* Tags Filter */
+  .tags-filter {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 2rem;
+    flex-wrap: wrap;
+  }
+
+  .filter-label {
+    font-weight: 500;
+    color: var(--color-text-secondary);
+  }
+
+  .tags-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+
+  .tags-list .tag {
+    cursor: pointer;
+    border: none;
+    transition: all 0.2s ease;
+  }
+
+  .tags-list .tag:hover,
+  .tags-list .tag.active {
+    background-color: var(--color-accent);
+    color: white;
+  }
+
+  /* Posts Grid */
+  .posts-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem;
+  }
+
+  .post-card {
+    padding: 1.5rem;
+    background-color: var(--color-card-bg);
+    border: 1px solid var(--color-border);
+    border-radius: 0.75rem;
+    transition: all 0.2s ease;
+  }
+
+  .post-card:hover {
+    border-color: var(--color-border-hover);
+    transform: translateY(-2px);
+  }
+
+  .post-card.hidden {
+    display: none;
+  }
+
+  .post-meta {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 0.75rem;
+    font-size: 0.875rem;
+    color: var(--color-text-tertiary);
+  }
+
+  .read-time {
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
+  }
+
+  .read-time::before {
+    content: '•';
+    margin-right: 0.5rem;
+  }
+
+  .post-card h2 {
+    font-size: 1.25rem;
+    margin-bottom: 0.75rem;
+    line-height: 1.4;
+  }
+
+  .post-card h2 a {
+    color: var(--color-text);
+  }
+
+  .post-card h2 a:hover {
+    color: var(--color-accent);
+  }
+
+  .post-card > p {
+    color: var(--color-text-secondary);
+    font-size: 0.875rem;
+    line-height: 1.6;
+    margin-bottom: 1rem;
+  }
+
+  .post-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-bottom: 1rem;
+  }
+
+  .read-more {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.875rem;
+    font-weight: 500;
+  }
+
+  @media (max-width: 768px) {
+    .posts-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .tags-filter {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+  }
+</style>
+
+<script>
+  function initTagFilter() {
+    const tags = document.querySelectorAll('.tags-list .tag');
+    const posts = document.querySelectorAll('.post-card');
+
+    tags.forEach(tag => {
+      tag.addEventListener('click', () => {
+        // Update active state
+        tags.forEach(t => t.classList.remove('active'));
+        tag.classList.add('active');
+
+        const selectedTag = tag.getAttribute('data-tag');
+
+        // Filter posts
+        posts.forEach(post => {
+          const postTags = post.getAttribute('data-tags')?.split(',') || [];
+          if (selectedTag === 'all' || postTags.includes(selectedTag)) {
+            post.classList.remove('hidden');
+          } else {
+            post.classList.add('hidden');
+          }
+        });
+      });
+    });
+  }
+
+  initTagFilter();
+  document.addEventListener('astro:after-swap', initTagFilter);
+</script>
