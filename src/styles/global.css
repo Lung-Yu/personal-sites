@@ -191,31 +191,324 @@ pre code {
   color: oklch(0.882 0.059 254.128);
 }
 
-/* ===== Print Styles (for Resume) ===== */
+/* ===== Print Styles (for Resume/CV) ===== */
 @media print {
+  /* Page Setup */
+  @page {
+    size: A4;
+    margin: 12mm 15mm;
+  }
+
+  /* Hide non-essential elements */
   nav,
   footer,
-  .no-print {
+  .no-print,
+  .header,
+  .mobile-menu-btn,
+  .theme-toggle,
+  .language-switcher {
     display: none !important;
   }
 
-  body {
+  /* Base styles */
+  html, body {
     background-color: white !important;
-    color: black !important;
-    font-size: 12pt;
+    color: #1a1a1a !important;
+    font-size: 10pt !important;
+    line-height: 1.4 !important;
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
   }
 
-  .section {
+  /* Container adjustments */
+  .container {
+    max-width: 100% !important;
+    padding: 0 !important;
+    margin: 0 !important;
+  }
+
+  /* Section spacing */
+  .section,
+  .about-section {
+    padding: 0.75rem 0 !important;
+    margin-bottom: 0.5rem !important;
+    break-inside: avoid;
+    page-break-inside: avoid;
+  }
+
+  /* Section titles */
+  .section-title {
+    font-size: 1.1rem !important;
+    margin-bottom: 0.5rem !important;
+    padding-bottom: 0.25rem !important;
+    border-bottom: 1px solid #ddd !important;
+    color: #333 !important;
+  }
+
+  /* Bio/Header section */
+  .bio-section {
+    display: flex !important;
+    flex-direction: row !important;
+    gap: 1.5rem !important;
+    align-items: flex-start !important;
+    margin-bottom: 1rem !important;
+  }
+
+  .bio-avatar {
+    width: 80px !important;
+    height: 80px !important;
+    font-size: 2rem !important;
+    background: #e5e5e5 !important;
+    color: #666 !important;
+    flex-shrink: 0;
+  }
+
+  .bio-info {
+    flex: 1;
+  }
+
+  .bio-name {
+    font-size: 1.5rem !important;
+    margin-bottom: 0.25rem !important;
+  }
+
+  .bio-title {
+    font-size: 1rem !important;
+    color: #555 !important;
+    margin-bottom: 0.25rem !important;
+  }
+
+  .bio-location {
+    font-size: 0.85rem !important;
+    color: #666 !important;
+  }
+
+  .bio-description {
+    font-size: 0.9rem !important;
+    line-height: 1.4 !important;
+    color: #444 !important;
+    margin-top: 0.5rem !important;
+  }
+
+  /* Cards - flatten for print */
+  .card {
+    background: white !important;
+    border: 1px solid #ddd !important;
+    box-shadow: none !important;
+    padding: 0.5rem !important;
+    margin-bottom: 0.5rem !important;
+    break-inside: avoid;
+    page-break-inside: avoid;
+  }
+
+  .card:hover {
+    transform: none !important;
+    box-shadow: none !important;
+  }
+
+  /* Timeline items */
+  .timeline-item {
+    break-inside: avoid;
+    page-break-inside: avoid;
+    margin-bottom: 0.75rem !important;
+    padding-left: 0 !important;
+    border-left: none !important;
+  }
+
+  .timeline-dot {
+    display: none !important;
+  }
+
+  .timeline-content {
+    padding: 0 !important;
+  }
+
+  .timeline-header {
+    margin-bottom: 0.25rem !important;
+  }
+
+  .timeline-company {
+    font-size: 0.95rem !important;
+    font-weight: 600 !important;
+  }
+
+  .timeline-position {
+    font-size: 0.85rem !important;
+    color: #555 !important;
+  }
+
+  .timeline-date {
+    font-size: 0.8rem !important;
+    color: #666 !important;
+  }
+
+  .timeline-description li {
+    font-size: 0.85rem !important;
+    margin-bottom: 0.15rem !important;
+  }
+
+  /* Grid layouts - compact for print */
+  .certs-grid,
+  .skills-grid,
+  .social-grid {
+    display: grid !important;
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 0.5rem !important;
+  }
+
+  /* Certification cards */
+  .cert-card {
+    padding: 0.4rem !important;
+    font-size: 0.8rem !important;
+  }
+
+  .cert-name {
+    font-size: 0.85rem !important;
+    font-weight: 600 !important;
+  }
+
+  .cert-issuer {
+    font-size: 0.75rem !important;
+    color: #666 !important;
+  }
+
+  .cert-date {
+    font-size: 0.7rem !important;
+    color: #888 !important;
+  }
+
+  /* Speaking items */
+  .speaking-item {
+    padding: 0.4rem 0 !important;
+    border-bottom: 1px solid #eee !important;
     break-inside: avoid;
   }
 
-  a {
-    color: black !important;
-    text-decoration: underline;
+  .speaking-title {
+    font-size: 0.85rem !important;
+    font-weight: 600 !important;
   }
 
+  .speaking-event {
+    font-size: 0.8rem !important;
+    color: #555 !important;
+  }
+
+  .speaking-date,
+  .speaking-location {
+    font-size: 0.75rem !important;
+    color: #666 !important;
+  }
+
+  /* Education items */
+  .education-item {
+    margin-bottom: 0.5rem !important;
+    break-inside: avoid;
+  }
+
+  .education-school {
+    font-size: 0.9rem !important;
+    font-weight: 600 !important;
+  }
+
+  .education-degree {
+    font-size: 0.85rem !important;
+    color: #555 !important;
+  }
+
+  .education-date {
+    font-size: 0.8rem !important;
+    color: #666 !important;
+  }
+
+  /* Skills */
+  .skill-category {
+    break-inside: avoid;
+  }
+
+  .skill-category-name {
+    font-size: 0.85rem !important;
+    font-weight: 600 !important;
+    margin-bottom: 0.25rem !important;
+  }
+
+  .skill-tags {
+    display: flex !important;
+    flex-wrap: wrap !important;
+    gap: 0.25rem !important;
+  }
+
+  /* Tags - simplified for print */
+  .tag {
+    background: #f0f0f0 !important;
+    color: #333 !important;
+    font-size: 0.7rem !important;
+    padding: 0.1rem 0.4rem !important;
+    border: 1px solid #ddd !important;
+  }
+
+  /* Links */
+  a {
+    color: #333 !important;
+    text-decoration: none !important;
+  }
+
+  /* Don't show URL for internal links */
+  a[href^="/"]::after,
+  a[href^="#"]::after {
+    content: none !important;
+  }
+
+  /* Show URL only for external links in resume */
   a[href^="http"]::after {
-    content: " (" attr(href) ")";
-    font-size: 0.8em;
+    content: " (" attr(href) ")" !important;
+    font-size: 0.7em !important;
+    color: #666 !important;
+  }
+
+  /* Hide social section URLs (too long) */
+  .social-link a::after {
+    content: none !important;
+  }
+
+  /* Page header for resume */
+  .resume-header {
+    text-align: center;
+    margin-bottom: 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid #333;
+  }
+
+  .resume-header h1 {
+    font-size: 1.5rem !important;
+    margin-bottom: 0.25rem !important;
+  }
+
+  .resume-header .subtitle {
+    font-size: 1rem !important;
+    color: #555 !important;
+  }
+
+  /* Print hint - show only on screen */
+  .print-hint {
+    display: none !important;
+  }
+}
+
+/* Print hint styling (visible only on screen) */
+@media screen {
+  .print-hint {
+    display: block;
+    background-color: var(--color-bg-secondary);
+    border: 1px solid var(--color-border);
+    border-radius: 0.5rem;
+    padding: 1rem;
+    margin-bottom: 1.5rem;
+    font-size: 0.875rem;
+    color: var(--color-text-secondary);
+  }
+
+  .print-hint strong {
+    color: var(--color-text);
   }
 }
