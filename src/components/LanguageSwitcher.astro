@@ -8,8 +8,10 @@ import { languages, getLangFromUrl, getTranslatedPath, useTranslations } from '.
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
 
-// Get current path without language prefix
-const currentPath = Astro.url.pathname;
+// Get current path without base and language prefix for switching
+const basePath = import.meta.env.BASE_URL.replace(/\/$/, '');
+const pathWithoutBase = Astro.url.pathname.replace(basePath, '');
+const cleanPath = pathWithoutBase.replace(/^\//, '').replace(/^(en|zh-tw)\//, '');
 ---
 
 <div class="language-switcher">
@@ -55,7 +57,7 @@ const currentPath = Astro.url.pathname;
   <div class="language-dropdown" role="menu">
     {Object.entries(languages).map(([code, name]) => (
       <a
-        href={getTranslatedPath(currentPath, code as keyof typeof languages)}
+        href={getTranslatedPath(cleanPath, code as keyof typeof languages)}
         class:list={['language-option', { active: code === lang }]}
         role="menuitem"
         aria-current={code === lang ? 'page' : undefined}
