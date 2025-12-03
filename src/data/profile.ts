@@ -41,8 +41,8 @@ export interface Certification {
   issueDate: string; // Format: YYYY-MM
   expiryDate?: string; // undefined means no expiry
   credentialId?: string;
-  credentialUrl?: string;
-  badgeUrl?: string; // Image URL for certification badge
+  credentialUrl?: string; // Online verification link (e.g., Credly)
+  certificateUrl?: string; // PDF certificate file path
 }
 
 export interface Speaking {
@@ -264,63 +264,58 @@ export const profile: Profile = {
       issuer: 'ISC2',
       issueDate: '2022-11',
       expiryDate: '2025-10',
-      badgeUrl: '/images/certifications/isc2/isc_cissp.png',
+      credentialUrl: 'https://www.credly.com/badges/37b36bbe-cf5b-47fe-b697-71cca23bba6c',
+      certificateUrl: '/certificates/isc2/isc_cissp.pdf',
     },
     {
       name: 'CSSLP',
       issuer: 'ISC2',
       issueDate: '2024-06',
       expiryDate: '2027-05',
-      badgeUrl: '/images/certifications/isc2/isc_csslp.png',
-    },
-    {
-      name: 'CCSP',
-      issuer: '(ISC)²',
-      issueDate: '2023-05',
-      expiryDate: '2026-05',
-      badgeUrl: '/images/certifications/isc2/ISC_CCSP_logo.png',
+      credentialUrl: 'https://www.credly.com/badges/4eab1fd1-b3ed-4989-b6e6-5189e00822ab',
+      certificateUrl: '/certificates/isc2/isc_csslp.pdf',
     },
     {
       name: 'ISO 27001:2022 Lead Auditor',
       issuer: 'BSI',
       issueDate: '2023-11',
-      badgeUrl: '/images/certifications/ISO/ISO_27001_2022_LA.png',
+      certificateUrl: '/certificates/iso/ISO_27001_2022_LA.pdf',
     },
     {
       name: 'CEH (Certified Ethical Hacker)',
       issuer: 'EC-Council',
       issueDate: '2020-01',
-      badgeUrl: '/images/certifications/ec-council/ECC_Certified_Ethical_Hacker.jpg',
+      certificateUrl: '/certificates/ec-council/ceh.pdf',
     },
     {
       name: 'Google Cybersecurity',
       issuer: 'Google',
       issueDate: '2023-01',
-      badgeUrl: '/images/certifications/google/google_cybersecurity_certificate.png',
+      // No PDF available
     },
     {
       name: 'RHCVA',
       issuer: 'Red Hat',
       issueDate: '2018-01',
-      badgeUrl: '/images/certifications/red_hat/RHCVA.jpg',
+      certificateUrl: '/certificates/red-hat/rhcva.pdf',
     },
     {
       name: 'MCSD: Web Applications',
       issuer: 'Microsoft',
       issueDate: '2017-01',
-      badgeUrl: '/images/certifications/microsoft/MCSD_Web_Applications.jpg',
+      certificateUrl: '/certificates/microsoft/mcsd-web-applications.pdf',
     },
     {
       name: 'OCPJWCD',
       issuer: 'Oracle',
       issueDate: '2016-01',
-      badgeUrl: '/images/certifications/oracle/OCPJWCD.jpg',
+      certificateUrl: '/certificates/oracle/ocpjwcd.pdf',
     },
     {
       name: 'OCJP',
       issuer: 'Oracle',
       issueDate: '2015-01',
-      badgeUrl: '/images/certifications/oracle/OCJP.jpg',
+      // Only image available, no PDF
     },
   ],
 
